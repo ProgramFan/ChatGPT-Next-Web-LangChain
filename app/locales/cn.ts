@@ -523,6 +523,10 @@ const cn = {
     Topic: "主题",
     Time: "时间",
   },
+  Sidebar: {
+    Title: "NextChat",
+    SubTitle: "您私人定制的 AI 助理.",
+  },
 };
 
 type DeepPartial<T> = T extends object

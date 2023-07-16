@@ -526,6 +526,10 @@ const en: LocaleType = {
     Topic: "Topic",
     Time: "Time",
   },
+  Sidebar: {
+    Title: "NextChat",
+    SubTitle: "Build your own AI assistant.",
+  },
 
   URLCommand: {
     Code: "Detected access code from url, confirm to apply?",
