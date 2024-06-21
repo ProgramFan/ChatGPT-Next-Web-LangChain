@@ -7,7 +7,7 @@
 
 [![Web][Web-image]][web-url]
 
-[网页版](https://n3xt.chat) / [反馈](https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues) / [Discord](https://discord.gg/zTwDFtSC)
+[网页版](https://n3xt.chat) / [反馈](https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues) / [Discord](https://discord.gg/2Dvtf7Pq) / QQ群: `763467624`
 
 [web-url]: https://n3xt.chat/
 [download-url]: https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/releases
@@ -40,7 +40,10 @@
 
 - 除插件工具外，与原项目保持一致 [ChatGPT-Next-Web 主要功能](https://github.com/Yidadaa/ChatGPT-Next-Web#主要功能)
 
-- 支持 OpenAI TTS（文本转语音）https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues/208
+- 支持 TTS （文本转语音）
+  - （免费） Edge TTS https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues/266
+    - 环境变量（可选）：`EDGE_TTS_VOICE_NAME`
+  - （收费） OpenAI TTS https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues/208
 
 - 支持语音输入，需要使用 HTTPS 访问 https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues/208
 
@@ -54,7 +57,7 @@
     - [GoogleCustomSearch](https://api.js.langchain.com/classes/langchain_tools.GoogleCustomSearch.html)
   
       - 环境变量：
-        - `GOOGLE_API_KEY`
+        - ~~`GOOGLE_API_KEY`~~ `GOOGLE_SEARCH_API_KEY`
         - `GOOGLE_CSE_ID`
       - 申请参考：[说明](https://stackoverflow.com/questions/37083058/programmatically-searching-google-in-python-using-custom-search)
   
@@ -121,7 +124,7 @@
     - **插件功能**
   - 如何启用
     - 配置密钥 `GOOGLE_API_KEY` ，key 可以在这里获取：https://ai.google.dev/tutorials/setup
-    - 配置自定义接口地址（可选） `GOOGLE_BASE_URL`，可以使用我的这个项目搭建一个基于 vercel 的代理服务：[google-gemini-vercel-proxy](https://github.com/Hk-Gosuto/google-gemini-vercel-proxy)
+    - 配置自定义接口地址（可选） `GEMINI_BASE_URL`，可以使用我的这个项目搭建一个基于 vercel 的代理服务：[vercel-ai-proxy](https://github.com/Hk-Gosuto/vercel-ai-proxy)
   - 常见问题参考：[Gemini Prompting FAQs](https://js.langchain.com/docs/integrations/chat/google_generativeai#gemini-prompting-faqs)
   - ~~gemini-pro-vision 模型需要配置对象存储服务，请参考 [对象存储服务配置指南](./docs/s3-oss.md) 配置~~
   - ⚠ gemini-pro-vision 注意事项 https://github.com/Hk-Gosuto/ChatGPT-Next-Web-LangChain/issues/203 ：
@@ -235,7 +238,7 @@ OpenAI 接口代理 URL，如果你手动配置了 openai 接口代理，请填�
 
 Google Gemini Pro Api Key.
 
-### `GOOGLE_BASE_URL` （可选）
+### ~~ `GOOGLE_BASE_URL` （可选）~~  `GEMINI_BASE_URL` （可选）
 
 Google Gemini Pro Api Url.
 
@@ -281,12 +284,26 @@ anthropic claude Api Url.
 
 如果你想禁用从链接解析预制设置，将此环境变量设置为 1 即可。
 
-### `WHITE_WEBDEV_ENDPOINTS` (可选)
+### `WHITE_WEBDEV_ENDPOINTS` (optional)
 
 如果你想增加允许访问的webdav服务地址，可以使用该选项，格式要求：
 - 每一个地址必须是一个完整的 endpoint
 > `https://xxxx/xxx`
 - 多个地址以`,`相连
+
+### `DEFAULT_INPUT_TEMPLATE` （可选）
+
+自定义默认的 template，用于初始化『设置』中的『用户输入预处理』配置项
+
+### `EDGE_TTS_VOICE_NAME` （可选）
+
+配置 Edge TTS 使用的语音声音，默认为：zh-CN-YunxiNeural
+可访问 https://learn.microsoft.com/zh-cn/azure/ai-services/speech-service/language-support?tabs=tts#supported-languages 查看支持的参数
+
+### `USE_OPENAI_ENDPOINT_FOR_ALL_MODELS` （可选）
+
+配置所有模型都使用 OpenAI 路由，在使用类似 `one-api` 的中转项目时会很有用
+将此环境变量设置为 1 即可
 
 ## 部署
 
